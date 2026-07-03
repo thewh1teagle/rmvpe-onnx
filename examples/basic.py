@@ -1,6 +1,7 @@
 """
+wget https://github.com/thewh1teagle/rmvpe-onnx/releases/download/model-files-v1.0/rmvpe.onnx
 wget https://github.com/thewh1teagle/phonikud-chatterbox/releases/download/asset-files-v1/female1.wav
-uv run examples/basic.py female1.wav
+uv run examples/basic.py
 """
 
 from __future__ import annotations
