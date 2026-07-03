@@ -1,0 +1,19 @@
+[project]
+name = "rmvpe-onnx"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "thewh1teagle", email = "61390950+thewh1teagle@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "librosa>=0.11.0",
+    "numpy>=2.4.6",
+    "onnxruntime>=1.27.0",
+    "soundfile>=0.14.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.16,<0.12.0"]
+build-backend = "uv_build"
