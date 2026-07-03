@@ -1,5 +1,5 @@
 [project]
-name = "rmvpe-export"
+name = "rmvpe-export-onnx"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-rmvpe-export = "rmvpe_export:main"
+rmvpe-export-onnx = "rmvpe_export_onnx:main"
 
 [build-system]
 requires = ["uv_build>=0.11.16,<0.12.0"]

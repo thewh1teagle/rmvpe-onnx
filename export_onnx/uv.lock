@@ -1118,7 +1118,7 @@ wheels = [
 ]
 
 [[package]]
-name = "rmvpe-export"
+name = "rmvpe-export-onnx"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

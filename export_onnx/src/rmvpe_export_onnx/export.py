@@ -1,4 +1,5 @@
 import argparse
+import sys
 from pathlib import Path
 
 import onnx
@@ -6,7 +7,11 @@ import torch
 from huggingface_hub import hf_hub_download
 from safetensors import safe_open
 
-from .model.constants import (
+ROOT_SRC = Path(__file__).resolve().parents[3] / "src"
+if str(ROOT_SRC) not in sys.path:
+    sys.path.insert(0, str(ROOT_SRC))
+
+from rmvpe_lite.model.constants import (
     CONST,
     MEL_FMAX,
     MEL_FMIN,
@@ -15,7 +20,7 @@ from .model.constants import (
     SAMPLE_RATE,
     WINDOW_LENGTH,
 )
-from .model.model import E2E0
+from rmvpe_lite.model.model import E2E0
 
 
 DEFAULT_REPO_ID = "stylish-tts/pitch_extractor"

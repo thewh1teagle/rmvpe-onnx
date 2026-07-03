@@ -1,6 +1,6 @@
 # Attribution
 
-This project packages RMVPE for ONNXRuntime inference.
+This project packages RMVPE for lightweight ONNXRuntime and PyTorch inference.
 
 The PyTorch RMVPE export source used here was copied from
 [Stylish-TTS/stylish-tts](https://github.com/Stylish-TTS/stylish-tts). Stylish

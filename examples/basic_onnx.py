@@ -1,7 +1,7 @@
 """
 wget https://github.com/thewh1teagle/rmvpe-onnx/releases/download/model-files-v1.0/rmvpe.onnx
 wget https://github.com/thewh1teagle/phonikud-chatterbox/releases/download/asset-files-v1/female1.wav
-uv run examples/basic.py
+uv run --extra onnx examples/basic_onnx.py
 """
 
 from __future__ import annotations
@@ -10,7 +10,7 @@ from pathlib import Path
 
 import soundfile as sf
 
-from rmvpe_onnx import RMVPE
+from rmvpe_lite.onnx import RMVPEOnnx
 
 
 def main() -> None:
@@ -21,7 +21,7 @@ def main() -> None:
     if audio.ndim > 1:
         audio = audio.mean(axis=1)
 
-    model = RMVPE(model_path)
+    model = RMVPEOnnx(model_path)
     f0 = model.extract(audio, sample_rate=sample_rate)
     voiced = f0[f0 > 0]
 

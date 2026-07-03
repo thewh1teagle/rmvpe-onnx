@@ -9,7 +9,7 @@ import onnxruntime as ort
 
 
 @dataclass(frozen=True)
-class RMVPEConfig:
+class RMVPEOnnxConfig:
     sample_rate: int
     n_mels: int
     window_length: int
@@ -22,7 +22,7 @@ class RMVPEConfig:
     stft_pad_mode: str
 
 
-class RMVPE:
+class RMVPEOnnx:
     def __init__(
         self,
         model_path: str | Path,
@@ -94,7 +94,7 @@ class RMVPE:
         return np.log(np.clip(mel, 1e-5, None)).astype(np.float32, copy=False)
 
 
-def _config_from_metadata(metadata: dict[str, str]) -> RMVPEConfig:
+def _config_from_metadata(metadata: dict[str, str]) -> RMVPEOnnxConfig:
     required = {
         "sample_rate",
         "n_mels",
@@ -112,7 +112,7 @@ def _config_from_metadata(metadata: dict[str, str]) -> RMVPEConfig:
         joined = ", ".join(missing)
         raise ValueError(f"ONNX model is missing RMVPE metadata: {joined}")
 
-    return RMVPEConfig(
+    return RMVPEOnnxConfig(
         sample_rate=int(metadata["sample_rate"]),
         n_mels=int(metadata["n_mels"]),
         window_length=int(metadata["window_length"]),
@@ -155,7 +155,7 @@ def _pad_frames_to_multiple(mel: np.ndarray, *, multiple: int) -> np.ndarray:
 
 def _to_local_average_f0(
     hidden: np.ndarray,
-    config: RMVPEConfig,
+    config: RMVPEOnnxConfig,
     threshold: float,
     center: np.ndarray | None = None,
 ) -> np.ndarray:
@@ -184,7 +184,7 @@ def _to_local_average_f0(
 
 def _to_viterbi_f0(
     hidden: np.ndarray,
-    config: RMVPEConfig,
+    config: RMVPEOnnxConfig,
     threshold: float,
 ) -> np.ndarray:
     salience = hidden[0].astype(np.float64, copy=False)
