@@ -9,6 +9,8 @@ Install from GitHub:
 uv pip install git+https://github.com/thewh1teagle/rmvpe-onnx
 ```
 
+Download the ONNX model from the [model-files-v1.0 release](https://github.com/thewh1teagle/rmvpe-onnx/releases/download/model-files-v1.0/rmvpe.onnx).
+
 Basic usage:
 
 ```python
